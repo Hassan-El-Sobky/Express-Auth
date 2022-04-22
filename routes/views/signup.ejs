@@ -1,0 +1,51 @@
+<%- include('shared/header.ejs') %>
+    <div class="form">
+        <div id="signup">
+            <h1>Sign Up for Free</h1>
+
+            <form action="/handleSignUp" method="post">
+                <div class="top-row">
+                    <div class="field-wrap">
+                        <label>First Name<span class="req">*</span></label>
+                        <input value="<%=oldInputvalue.fname%>" name="fname" type="text" />
+                    </div>
+
+                    <div class="field-wrap">
+                        <label> Last Name<span class="req">*</span> </label>
+                        <input name="lname" value="<%=oldInputvalue.lname%>" type="text" />
+                    </div>
+                </div>
+
+                <div class="field-wrap">
+                    <label> Email Address<span class="req">*</span> </label>
+                    <input name="email" value="<%=oldInputvalue.email%>" type="email" />
+
+                    <% if (errors.find((x)=>x.param =='exists')) { %>
+                        <div class="alert alert-danger text-center">
+                            Email Already exists
+                        </div>
+                       <% } %>
+
+                </div>
+
+                <div class="field-wrap">
+                    <label> Set A Password<span class="req">*</span> </label>
+                    <input name="password" value="<%=oldInputvalue.password%>" type="password" />
+                </div>
+                <div class="field-wrap">
+                    <label> Reset A Password<span class="req">*</span> </label>
+                    <input name="rePassword" value="<%=oldInputvalue.rePassword%>" type="password" />
+                 <% if (errors.find((x)=>x.param =='rePasswrod')) { %>
+                  <div class="alert alert-danger text-center">
+                      Please enter the same password
+                  </div>
+                 <% } %>
+
+                </div>
+                <button type="submit" class="button button-block">Get Started</button>
+            </form>
+        </div>
+    </div>
+
+
+    <%- include('shared/footer.ejs') %>

@@ -1,0 +1,38 @@
+<%- include('shared/header.ejs') %>
+    <div class="form">
+        <div id="login">
+            <h1>Welcome Back!</h1>
+
+            <form action="/handleSignin" method="post">
+                <div class="field-wrap">
+                    <label> Email Address<span class="req">*</span> </label>
+                    <input name="email" type="email" />
+
+                    <% if (sisEmail)  { %>
+                        <div class="alert alert-danger text-center">
+                           In Correct Email
+                        </div>
+                       <% } %>
+                   
+                </div>
+
+                <div class="field-wrap">
+                    <label> Password<span class="req">*</span> </label>
+                    <input name="password" type="password" />
+                    <% if (!isTrue) { %>
+                        <div class="alert alert-danger text-center">
+                           In Correct Password
+                        </div>
+                       <% } %>
+                   
+                </div>
+
+                <p class="forgot"><a href="#">Forgot Password?</a></p>
+
+                <button class="button button-block">Log In</button>
+            </form>
+        </div>
+    </div>
+
+
+    <%- include('shared/footer.ejs') %>
